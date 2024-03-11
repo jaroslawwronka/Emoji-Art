@@ -44,7 +44,7 @@ extension String {
 
 extension AnyTransition {
     static let rollUp: AnyTransition = .asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
-    
+    static let rollDown: AnyTransition = .asymmetric(insertion: .move(edge: .top), removal: .move(edge: .bottom))
 }
 
 struct AnimatedActionButton: View {
@@ -77,4 +77,16 @@ struct AnimatedActionButton: View {
     }
     
     
+}
+
+extension Character {
+    var isEmoji: Bool {
+        
+        if let firstScalar = unicodeScalars.first, firstScalar.properties.isEmoji {
+            return (firstScalar.value >= 0x238d || unicodeScalars.count > 1 )
+        } else {
+            return false
+        }
+        
+    }
 }
