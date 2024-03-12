@@ -25,7 +25,7 @@ struct PaletteChooser: View {
                 .font(nil)
         }
         .sheet(isPresented: $showPaletteList) {
-            PaletteList()
+            EditablePaletteList()
                 .font(nil)
         }
     }
