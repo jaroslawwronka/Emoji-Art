@@ -23,6 +23,7 @@
 		814A9F252B999FC700A7C07F /* PaletteEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814A9F242B999FC700A7C07F /* PaletteEditor.swift */; };
 		8195AF272B97011D00A946CC /* PaletteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AF262B97011D00A946CC /* PaletteStore.swift */; };
 		8195AF292B970B8700A946CC /* PaletteChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AF282B970B8700A946CC /* PaletteChooser.swift */; };
+		81B864312B9F606700768872 /* PaletteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B864302B9F606700768872 /* PaletteList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		814A9F242B999FC700A7C07F /* PaletteEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteEditor.swift; sourceTree = "<group>"; };
 		8195AF262B97011D00A946CC /* PaletteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStore.swift; sourceTree = "<group>"; };
 		8195AF282B970B8700A946CC /* PaletteChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteChooser.swift; sourceTree = "<group>"; };
+		81B864302B9F606700768872 /* PaletteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				81190E862B7BA8C900612F6F /* EmojiArtDocument.swift */,
 				81190E882B7BAA5400612F6F /* EmojiArtDocumentView.swift */,
 				8195AF282B970B8700A946CC /* PaletteChooser.swift */,
+				81B864302B9F606700768872 /* PaletteList.swift */,
 				814A9F242B999FC700A7C07F /* PaletteEditor.swift */,
 				81190E8E2B8E3AC600612F6F /* Palette.swift */,
 				8195AF262B97011D00A946CC /* PaletteStore.swift */,
@@ -287,6 +290,7 @@
 				81190E8D2B7E3EFE00612F6F /* Sturldata.swift in Sources */,
 				81190E892B7BAA5400612F6F /* EmojiArtDocumentView.swift in Sources */,
 				81190E8B2B7BBDC200612F6F /* Extensions.swift in Sources */,
+				81B864312B9F606700768872 /* PaletteList.swift in Sources */,
 				81190E852B7BA7BB00612F6F /* EmojiArt.swift in Sources */,
 				8195AF272B97011D00A946CC /* PaletteStore.swift in Sources */,
 				81190E5B2B7BA4B700612F6F /* ContentView.swift in Sources */,
@@ -466,7 +470,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,7 +500,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
