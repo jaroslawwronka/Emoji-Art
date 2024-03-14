@@ -24,6 +24,7 @@
 		8195AF272B97011D00A946CC /* PaletteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AF262B97011D00A946CC /* PaletteStore.swift */; };
 		8195AF292B970B8700A946CC /* PaletteChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AF282B970B8700A946CC /* PaletteChooser.swift */; };
 		81B864312B9F606700768872 /* PaletteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B864302B9F606700768872 /* PaletteList.swift */; };
+		81B864332BA0941D00768872 /* PaletteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B864322BA0941D00768872 /* PaletteManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		8195AF262B97011D00A946CC /* PaletteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStore.swift; sourceTree = "<group>"; };
 		8195AF282B970B8700A946CC /* PaletteChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteChooser.swift; sourceTree = "<group>"; };
 		81B864302B9F606700768872 /* PaletteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteList.swift; sourceTree = "<group>"; };
+		81B864322BA0941D00768872 /* PaletteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteManager.swift; sourceTree = "<group>"; };
+		81B864342BA34E0A00768872 /* Emoji-Art-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Emoji-Art-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,7 @@
 		81190E572B7BA4B700612F6F /* Emoji Art */ = {
 			isa = PBXGroup;
 			children = (
+				81B864342BA34E0A00768872 /* Emoji-Art-Info.plist */,
 				81190E582B7BA4B700612F6F /* Emoji_ArtApp.swift */,
 				81190E5A2B7BA4B700612F6F /* ContentView.swift */,
 				81190E842B7BA7BB00612F6F /* EmojiArt.swift */,
@@ -121,6 +125,7 @@
 				81190E882B7BAA5400612F6F /* EmojiArtDocumentView.swift */,
 				8195AF282B970B8700A946CC /* PaletteChooser.swift */,
 				81B864302B9F606700768872 /* PaletteList.swift */,
+				81B864322BA0941D00768872 /* PaletteManager.swift */,
 				814A9F242B999FC700A7C07F /* PaletteEditor.swift */,
 				81190E8E2B8E3AC600612F6F /* Palette.swift */,
 				8195AF262B97011D00A946CC /* PaletteStore.swift */,
@@ -287,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81B864332BA0941D00768872 /* PaletteManager.swift in Sources */,
 				81190E8D2B7E3EFE00612F6F /* Sturldata.swift in Sources */,
 				81190E892B7BAA5400612F6F /* EmojiArtDocumentView.swift in Sources */,
 				81190E8B2B7BBDC200612F6F /* Extensions.swift in Sources */,
@@ -465,11 +471,13 @@
 				DEVELOPMENT_TEAM = 564UB3LSA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Emoji-Art-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -495,11 +503,13 @@
 				DEVELOPMENT_TEAM = 564UB3LSA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Emoji-Art-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
