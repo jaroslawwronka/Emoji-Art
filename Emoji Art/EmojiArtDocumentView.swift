@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct EmojiArtDocumentView: View {
+    @Environment(\.undoManager) var undoManager
     @ObservedObject var document: EmojiArtDocument
     typealias Emoji = EmojiArt.Emoji
+    @StateObject var paletteStore = PaletteStore(named: "Shared")
     
     @ScaledMetric var paletteEmojiSize: CGFloat = 40
     
@@ -23,6 +25,10 @@ struct EmojiArtDocumentView: View {
                 .font(.system(size: paletteEmojiSize))
                 .padding(.horizontal)
                 .scrollIndicators(.hidden)
+        }
+        .environmentObject(paletteStore)
+        .toolbar {
+            UndoButton()
         }
     }
     
@@ -54,13 +60,14 @@ struct EmojiArtDocumentView: View {
             .onChange(of: document.background.uiImage) { uiImage in
                 zoomToFit(uiImage?.size, in: geometry)
             }
-            .alert("Set Background",
-                   isPresented: $showBackgroundFailureAlert,
-                   presenting: document.background.failureReason,
-                   actions: { reason in
-                      Button("OK",role: .cancel) { }
-                   },
-                   message: { reason in
+            .alert(
+                "Set Background",
+                isPresented: $showBackgroundFailureAlert,
+                presenting: document.background.failureReason,
+                actions: { reason in
+                    Button("OK",role: .cancel) { }
+                    },
+                message: { reason in
                 Text(reason)
                 }
             )
@@ -89,36 +96,6 @@ struct EmojiArtDocumentView: View {
     
     @State private var showBackgroundFailureAlert = false
     
-    @State private var zoom: CGFloat = 1
-    @State private var pan: CGOffset = .zero
-    
-    @GestureState private var gestureZoom: CGFloat = 1
-    @GestureState private var gesturePan: CGOffset = .zero
-    
-    private var zoomGesture: some Gesture {
-        MagnificationGesture()
-            .updating($gestureZoom) { inMotionPinchScale, gestureZoom, _ in
-                gestureZoom = inMotionPinchScale
-            }
-            .onEnded { endingPinchScale in
-                zoom *= endingPinchScale
-            }
-    }
-    
-    private var panGesture: some Gesture {
-        DragGesture()
-            .updating($gesturePan) { value, gesturePan, _ in
-                gesturePan = value.translation
-            }
-            .onEnded { value in
-                pan += value.translation
-                
-                
-            }
-            
-            
-    }
-    
     @ViewBuilder
     private func documentContents(in geometry: GeometryProxy) -> some View {
         //AsyncImage(url: document.background) { phase in
@@ -145,17 +122,44 @@ struct EmojiArtDocumentView: View {
         
     }
     
+    @State private var zoom: CGFloat = 1
+    @State private var pan: CGOffset = .zero
+    
+    @GestureState private var gestureZoom: CGFloat = 1
+    @GestureState private var gesturePan: CGOffset = .zero
+    
+    private var zoomGesture: some Gesture {
+        MagnificationGesture()
+            .updating($gestureZoom) { inMotionPinchScale, gestureZoom, _ in
+                gestureZoom = inMotionPinchScale
+            }
+            .onEnded { endingPinchScale in
+                zoom *= endingPinchScale
+            }
+    }
+    
+    private var panGesture: some Gesture {
+        DragGesture()
+            .updating($gesturePan) { inMotionDragGestureValue, gesturePan, _ in
+                gesturePan = inMotionDragGestureValue.translation
+            }
+            .onEnded { endingDragGestureValue in
+                pan += endingDragGestureValue.translation
+            }
+    }
+    
     private func drop(_ sturldatas: [Sturldata], at location: CGPoint, in geometry: GeometryProxy) -> Bool {
         for sturldata in sturldatas {
             switch sturldata {
             case .url(let url):
-                document.setBackGround(url)
+                document.setBackGround(url, undoWith: undoManager)
                 return true
             case .string(let emoji):
                 document.addEmoji(
                     emoji,
                     at: emojiPosition(at: location, in: geometry),
-                    size: paletteEmojiSize / zoom
+                    size: paletteEmojiSize / zoom,
+                    undoWith: undoManager
                     )
                 return true
                 
@@ -177,11 +181,9 @@ struct EmojiArtDocumentView: View {
     
 }
 
-
-
-
-
-#Preview {
-    EmojiArtDocumentView(document: EmojiArtDocument())
-        .environmentObject(PaletteStore(named: "Preview"))
+struct EmojiArtDocumentView_Previews: PreviewProvider {
+    static var previews: some View {
+        EmojiArtDocumentView(document: EmojiArtDocument())
+            .environmentObject(PaletteStore(named: "Preview"))
+    }
 }

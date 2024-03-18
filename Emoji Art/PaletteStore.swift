@@ -25,16 +25,6 @@ extension UserDefaults {
     }
 }
 
-extension PaletteStore: Hashable {
-    static func == (lhs: PaletteStore, rhs: PaletteStore) -> Bool {
-        lhs.name == rhs.name
-    }
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
-    }
-    
-}
-
 class PaletteStore: ObservableObject, Identifiable {
     let name : String
     
@@ -62,6 +52,20 @@ class PaletteStore: ObservableObject, Identifiable {
             if palettes.isEmpty {
                 palettes = [Palette(name: "Warning", emojis: "⚠️")]
             }
+        }
+        observer = NotificationCenter.default.addObserver(
+            forName: UserDefaults.didChangeNotification,
+            object: nil,
+            queue: .main) { [weak self] notification in
+                self?.objectWillChange.send()
+            }
+    }
+    
+    @State private var observer:NSObjectProtocol?
+    
+    deinit {
+        if let observer {
+            NotificationCenter.default.removeObserver(observer)
         }
     }
     
@@ -110,4 +114,14 @@ class PaletteStore: ObservableObject, Identifiable {
     func append(name: String, emojis: String) {
         append(Palette(name:name, emojis: emojis))
     }
+}
+
+extension PaletteStore: Hashable {
+    static func == (lhs: PaletteStore, rhs: PaletteStore) -> Bool {
+        lhs.name == rhs.name
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+    
 }

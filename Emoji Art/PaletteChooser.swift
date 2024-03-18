@@ -70,7 +70,7 @@ struct PaletteChooser: View {
         
     }
     
-    func view(for palette: Palette) -> some View {
+    private func view(for palette: Palette) -> some View {
         HStack {
             Text(palette.name)
             ScrollingEmojis(palette.emojis)
@@ -82,8 +82,9 @@ struct PaletteChooser: View {
 
 struct ScrollingEmojis: View {
     let emojis: [String]
+    
     init(_ emojis: String) {
-        self.emojis = emojis.uniqued.map { String($0) /*String.init*/}
+        self.emojis = emojis.uniqued.map(String.init)
         
     }
     

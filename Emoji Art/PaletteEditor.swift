@@ -11,6 +11,7 @@ struct PaletteEditor: View {
     @Binding var palette: Palette
     
     private let emojiFont = Font.system(size:40)
+    
     @State private var emojisToAdd: String = ""
     
     enum Focused {

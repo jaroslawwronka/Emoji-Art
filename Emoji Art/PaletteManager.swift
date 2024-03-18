@@ -15,8 +15,9 @@ struct PaletteManager: View {
     var body: some View {
         NavigationSplitView {
             List(stores, selection: $selectedStore) { store in
-                Text(store.name)
-                    .tag(store)
+                /*Text(store.name)
+                    .tag(store)*/
+                PaletteStoreView(store: store)
             }
         } content: {
             if let selectedStore {
@@ -29,8 +30,16 @@ struct PaletteManager: View {
     }
 }
 
-//struct PaletteManager_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PaletteManager()
-//    }
-//}
+struct PaletteStoreView: View {
+    @ObservedObject var store: PaletteStore
+    
+    var body: some View {
+        Text(store.name)
+    }
+}
+
+struct PaletteManager_Previews: PreviewProvider {
+    static var previews: some View {
+        PaletteManager(stores: [PaletteStore(named: "Preview1"), PaletteStore(named: "Preview2")])
+    }
+}

@@ -22,7 +22,7 @@ struct EditablePaletteList: View {
                             
                             
                             Text(palette.name)
-                            Text(palette.emojis)
+                            Text(palette.emojis).lineLimit(1)
                         }
                     }
                 }
